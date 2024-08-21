@@ -94,6 +94,7 @@ chmod +x ~/rnaseq-scripts/Feature_Count.sh
 
 ```bash
 cp path/to/Data_formate.py ~/rnaseq-scripts/
+python3 Data_formate.py  path/to/.txt_files
 chmod +x ~/rnaseq-scripts/Data_formate.py
 ```
 
@@ -116,7 +117,7 @@ Feature_Count.sh <aligned_bam_directory>
 •	Outputs counts_gene_name.txt and gene_id_to_name.txt.
 
 	4.	Reformat Gene Count Matrix:
-Data_formate.py <input_count_matrix>
+Data_formate.py <path_to_.txt_files>
 •	Produces reformatted_gene_data.csv and merged_gene_count_matrix.txt.
 
 
