@@ -66,11 +66,11 @@ This section provides instructions to install the required automation scripts: G
 1. Greb_data.sh Installation
 
 	•	Purpose: This script automates the download of SRA files and their conversion to FASTQ format.
-
+```bash
 mkdir -p ~/rnaseq-scripts
 cp path/to/Greb_data.sh ~/rnaseq-scripts/
 chmod +x ~/rnaseq-scripts/Greb_data.sh
-
+```
 2. Trim_samples.sh Installation
 
 	•	Purpose: This script handles trimming of raw data, alignment using STAR, and MultiQC report generation.
