@@ -68,43 +68,41 @@ This section provides instructions to install the required automation scripts: G
 	•	Purpose: This script automates the download of SRA files and their conversion to FASTQ format.
 ```bash
 
-cp path/to/Greb_data.sh ~/rnaseq-scripts/ 
+cp path/to/Greb_data.sh  <GEO_PROJECT_ID>  ~/rnaseq-scripts/ 
 chmod +x ~/rnaseq-scripts/Greb_data.sh
 ```
 2. Trim_samples.sh Installation
 
 •	Purpose: This script handles trimming of raw data, alignment using STAR, and MultiQC report generation.
 
+```bash
 cp path/to/Trim_samples.sh ~/rnaseq-scripts/
 chmod +x ~/rnaseq-scripts/Trim_samples.sh
+```
 
 3. Feature_Count.sh Installation
 
 	•	Purpose: This script is used for feature counting and generating a count matrix.
-
+```bash
 cp path/to/Feature_Count.sh ~/rnaseq-scripts/
 chmod +x ~/rnaseq-scripts/Feature_Count.sh
+```
 
 4. Data_formate.py Installation
 
 	•	Purpose: This Python script reformats the gene count matrix and merges gene names with the count matrix.
 
+```bash
 cp path/to/Data_formate.py ~/rnaseq-scripts/
 chmod +x ~/rnaseq-scripts/Data_formate.py
-
-Step 3: Add Scripts to PATH
-
-To ensure these scripts can be executed from any location, add the scripts directory to your PATH:
-
-echo 'export PATH=~/rnaseq-scripts:$PATH' >> ~/.bashrc
-source ~/.bashrc
+```
 
 Usage
 
 Once the scripts are installed, follow these steps to process your RNA-seq data:
 
 	1.	Download SRA Files and Convert to FASTQ:
-Greb_data.sh <GEO_PROJECT_ID>
+Greb_data.sh <GEO_PROJECT_ID>  <input_fastq_directory>
 •	This will output SRA and FASTQ files.
 
 	2.	Trim, Align, and Generate MultiQC Report:
