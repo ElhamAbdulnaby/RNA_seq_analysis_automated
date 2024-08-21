@@ -48,12 +48,79 @@ This automated script is designed to process RNA-seq data from the Gene Expressi
 - SRA Toolkit
 
 ## Installation
+Step 1: Set Up the Environment
 
 To install the required tools and packages, you can follow the installation guides for each tool or use package managers like `conda` or `brew` (for macOS).
 
 Example using `conda`:
 
-```bash
+
 conda create -n rnaseq-env python=3.8
 conda activate rnaseq-env
 conda install -c bioconda fastqc trim-galore star featurecounts multiqc sra-tools
+
+# Step 2: Install the Automation Scripts
+
+This section provides instructions to install the required automation scripts: Greb_data.sh, Trim_samples.sh, Feature_Count.sh, and Data_formate.py.
+
+1. Greb_data.sh Installation
+
+	•	Purpose: This script automates the download of SRA files and their conversion to FASTQ format.
+
+mkdir -p ~/rnaseq-scripts
+cp path/to/Greb_data.sh ~/rnaseq-scripts/
+chmod +x ~/rnaseq-scripts/Greb_data.sh
+
+2. Trim_samples.sh Installation
+
+	•	Purpose: This script handles trimming of raw data, alignment using STAR, and MultiQC report generation.
+
+cp path/to/Trim_samples.sh ~/rnaseq-scripts/
+chmod +x ~/rnaseq-scripts/Trim_samples.sh
+
+3. Feature_Count.sh Installation
+
+	•	Purpose: This script is used for feature counting and generating a count matrix.
+
+cp path/to/Feature_Count.sh ~/rnaseq-scripts/
+chmod +x ~/rnaseq-scripts/Feature_Count.sh
+
+4. Data_formate.py Installation
+
+	•	Purpose: This Python script reformats the gene count matrix and merges gene names with the count matrix.
+
+cp path/to/Data_formate.py ~/rnaseq-scripts/
+chmod +x ~/rnaseq-scripts/Data_formate.py
+
+Step 3: Add Scripts to PATH
+
+To ensure these scripts can be executed from any location, add the scripts directory to your PATH:
+
+echo 'export PATH=~/rnaseq-scripts:$PATH' >> ~/.bashrc
+source ~/.bashrc
+
+Usage
+
+Once the scripts are installed, follow these steps to process your RNA-seq data:
+
+	1.	Download SRA Files and Convert to FASTQ:
+Greb_data.sh <GEO_PROJECT_ID>
+•	This will output SRA and FASTQ files.
+
+	2.	Trim, Align, and Generate MultiQC Report:
+Trim_samples.sh <input_fastq_directory>
+
+	This script will produce .trim, .aligned, and MultiQC files.
+
+	3.	Run Feature Counting:
+Feature_Count.sh <aligned_bam_directory>
+
+•	Outputs counts_gene_name.txt and gene_id_to_name.txt.
+
+	4.	Reformat Gene Count Matrix:
+Data_formate.py <input_count_matrix>
+•	Produces reformatted_gene_data.csv and merged_gene_count_matrix.txt.
+
+
+
+
