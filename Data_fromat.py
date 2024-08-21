@@ -1,12 +1,17 @@
 import pandas as pd
 import os
 
-path="./NetResult/"
+
 file_path = f"{path}/reformatted_gene_data.csv"
+read -p "Enter the directory where you want to save the data: " path_in
+# Create the directory if it doesn't exist
+mkdir -p "$path_in"
+# Change to the specified directory
+cd "$path_in"
 
 # Read the data into a DataFrame Genen name 
 data = []
-#with open(path, 'r') as f:
+with open(path_in, 'r') as f:
    for line in f:
         # Split the line into components
        parts = line.strip().split()
@@ -21,7 +26,7 @@ df = pd.DataFrame(data, columns=['gene_id', 'gene_name'])
 
 # Save the DataFrame to a CSV file or display it
 df.to_csv('reformatted_gene_data.csv', index=False)
-df = pd.read_csv(f"{path}/reformatted_gene_data.csv")
+df = pd.read_csv(f"{path_in}/reformatted_gene_data.csv")
 
 # Load the gene_id to gene_name mapping file into a DataFrame
 gene_names = pd.read_csv('reformatted_gene_data.csv')
