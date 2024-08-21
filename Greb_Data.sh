@@ -1,8 +1,15 @@
 #!/bin/bash
-project_id="PRJNA705172"
+#project_id="PRJNA705172"
+read -p "Enter the GEO project ID: " GEO_PROJECT_ID
+# Prompt the user for the directory where the data should be saved
+read -p "Enter the directory where you want to save the data: " path
+# Create the directory if it doesn't exist
+mkdir -p "$path"
+# Change to the specified directory
+cd "$path"
 path="./"
 
-esearch -db sra -query $project_id | efetch -format xml | xtract -pattern EXPERIMENT_PACKAGE \
+esearch -db sra -query $GEO_PROJECT_ID | efetch -format xml | xtract -pattern EXPERIMENT_PACKAGE \
 -element RUN@accession RUN@size | awk '{printf "%s\t%.2f GB\n", $1, $2/1024/1024/1024}' > Samples_SRS_Acc_numb.txt
 
 
