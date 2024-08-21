@@ -5,23 +5,23 @@ path="./NetResult/"
 file_path = f"{path}/reformatted_gene_data.csv"
 
 # Read the data into a DataFrame Genen name 
-#data = []
+data = []
 #with open(path, 'r') as f:
-#    for line in f:
+   for line in f:
         # Split the line into components
-#        parts = line.strip().split()
-#        # Extract gene_id and gene_name
-#        gene_id = parts[1].replace('"', '')
-#        gene_name = parts[3].replace('"', '')
-#        # Append to the data list
-#        data.append([gene_id, gene_name])
+       parts = line.strip().split()
+        # Extract gene_id and gene_name
+        gene_id = parts[1].replace('"', '')
+        gene_name = parts[3].replace('"', '')
+        # Append to the data list
+        data.append([gene_id, gene_name])
 
 # Convert the data list to a DataFrame
-#df = pd.DataFrame(data, columns=['gene_id', 'gene_name'])
+df = pd.DataFrame(data, columns=['gene_id', 'gene_name'])
 
 # Save the DataFrame to a CSV file or display it
-#df.to_csv('reformatted_gene_data.csv', index=False)
-#df = pd.read_csv(f"{path}/reformatted_gene_data.csv")
+df.to_csv('reformatted_gene_data.csv', index=False)
+df = pd.read_csv(f"{path}/reformatted_gene_data.csv")
 
 # Load the gene_id to gene_name mapping file into a DataFrame
 gene_names = pd.read_csv('reformatted_gene_data.csv')
