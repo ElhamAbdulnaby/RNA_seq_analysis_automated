@@ -1,5 +1,9 @@
 #!/bin/bash
-path_in="./"
+read -p "Enter the directory where you want to save the data: " path_in
+# Create the directory if it doesn't exist
+mkdir -p "$path_in"
+# Change to the specified directory
+cd "$path_in"
 trim_galore="/pah/to/trim_galore"
 genome_index="/path/to/mousegenome_index"
 # Run FastQC on all FASTQ files
