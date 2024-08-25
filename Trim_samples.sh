@@ -4,8 +4,24 @@ read -p "Enter the directory where you want to save the data: " path_in
 mkdir -p "$path_in"
 # Change to the specified directory
 cd "$path_in"
-trim_galore="/pah/to/trim_galore"
-genome_index="/path/to/mousegenome_index"
+
+read -p "Enter the directory where you saved TrimGalore: " trim_galore
+if [ ! -d "$trim_galore" ]; then
+  echo "The directory '$trim_galore' does not exist. Please check the path and try again."
+  exit 1
+fi
+
+read -p "Enter the directory where you saved the genome index for STAR: " genome_index
+if [ ! -d "$genome_index" ]; then
+  echo "The directory '$genome_index' does not exist. Please check the path and try again."
+  exit 1
+fi
+
+echo "All directories are valid".
+
+echo "Please ensure that STAR is correctly installed in the specified directory."
+
+
 # Run FastQC on all FASTQ files
 fastqc ${path_in}*.fastq
 
@@ -27,7 +43,6 @@ for forward_read in ${path_in}/*_1.fastq; do
 done
 
 
-$trim_galore   -q 20 --length 30  --paired --fastqc *.fastq --output_dir ${path_in}
 # Map your files
 
 # Loop through all files in the input directory with the suffix '_1_trimmed.fq'
