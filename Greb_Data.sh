@@ -42,6 +42,7 @@ for choice in $choices; do
     fi
   done
 
+
 for files in {$path}*; do fasterq-dump --split-files $files; done
 
 fastqc ${path}*.fastq
