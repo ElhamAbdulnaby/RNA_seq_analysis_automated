@@ -104,7 +104,7 @@ Once the scripts are installed, follow these steps to process your RNA-seq data:
 
 	1.	Download SRA Files and Convert to FASTQ:
          Greb_data.sh
-         •This will output SRA and FASTQ files.
+         #This will output SRA and FASTQ files.
 
 	2.	Trim, Align, and Generate MultiQC Report:
         Trim_samples.sh 
@@ -112,11 +112,11 @@ Once the scripts are installed, follow these steps to process your RNA-seq data:
 
 	3.	Run Feature Counting:
         Feature_Count.sh 
-        •	Outputs counts_gene_name.txt and gene_id_to_name.txt.
+        #	Outputs counts_gene_name.txt and gene_id_to_name.txt.
 
 	4.	Reformat Gene Count Matrix:
         Data_formate.py 
-        •Produces reformatted_gene_data.csv and merged_gene_count_matrix.txt.
+        #Produces reformatted_gene_data.csv and merged_gene_count_matrix.txt.
 
 
 
